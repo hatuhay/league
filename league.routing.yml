@@ -1,0 +1,9 @@
+league.settings:
+  path: '/admin/league'
+  options:
+    _admin_route: TRUE
+  defaults:
+    _form: '\Drupal\league\Form\LeagueSettingsForm'
+    _title: 'League Settings Form'
+  requirements:
+    _permission: 'administer league'

@@ -1,0 +1,22 @@
+{#
+/**
+ * @file game_events.html.twig
+ * Default theme implementation to present Game events data.
+ *
+ * This template is used when viewing Game events pages.
+ *
+ *
+ * Available variables:
+ * - content: A list of content items. Use 'content' to print all content, or
+ * - attributes: HTML attributes for the container element.
+ *
+ * @see template_preprocess_game_events()
+ *
+ * @ingroup themeable
+ */
+#}
+<div{{ attributes.addClass('game_events') }}>
+  {% if content %}
+    {{- content -}}
+  {% endif %}
+</div>

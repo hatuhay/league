@@ -1,0 +1,7 @@
+name: league_events
+type: module
+description: Events for games on League tournament
+core: 8.x
+package: League
+dependencies:
+  - league_game

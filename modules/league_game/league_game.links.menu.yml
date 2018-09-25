@@ -1,0 +1,13 @@
+# Game menu items definition
+entity.game.collection:
+  title: 'Game list'
+  route_name: entity.game.collection
+  description: 'List Game entities'
+  parent: system.admin_structure
+  weight: 100
+
+game.admin.structure.settings:
+  title: Game settings
+  description: 'Configure Game entities'
+  route_name: game.settings
+  parent: system.admin_structure

@@ -1,0 +1,4 @@
+administer league:
+  title: 'Administer league entities'
+  description: 'Allow to access the administration form to configure League.'
+  restrict access: true

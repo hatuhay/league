@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains league_player.module..
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function league_player_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the league_player module.
+    case 'help.page.league_player':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Entity for players on League') . '</p>';
+      return $output;
+
+    default:
+  }
+}

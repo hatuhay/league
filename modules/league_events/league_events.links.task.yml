@@ -1,0 +1,22 @@
+# Game events routing definition
+game_events.settings_tab:
+  route_name: game_events.settings
+  title: 'Settings'
+  base_route: game_events.settings
+
+entity.game_events.canonical:
+  route_name: entity.game_events.canonical
+  base_route: entity.game_events.canonical
+  title: 'View'
+
+entity.game_events.edit_form:
+  route_name: entity.game_events.edit_form
+  base_route: entity.game_events.canonical
+  title: 'Edit'
+
+entity.game_events.delete_form:
+  route_name:  entity.game_events.delete_form
+  base_route:  entity.game_events.canonical
+  title: Delete
+  weight: 10
+

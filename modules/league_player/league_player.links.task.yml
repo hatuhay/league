@@ -1,0 +1,25 @@
+# Player routing definition
+player.settings_tab:
+  route_name: player.settings
+  title: 'Settings'
+  base_route: player.settings
+entity.player.canonical:
+  route_name: entity.player.canonical
+  base_route: entity.player.canonical
+  title: 'View'
+
+entity.player.edit_form:
+  route_name: entity.player.edit_form
+  base_route: entity.player.canonical
+  title: Edit
+
+entity.player.delete_form:
+  route_name:  entity.player.delete_form
+  base_route:  entity.player.canonical
+  title: Delete
+  weight: 10
+
+entity.player.collection:
+  title: Players
+  route_name: entity.player.collection
+  base_route: system.admin_content

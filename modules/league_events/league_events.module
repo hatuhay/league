@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains league_events.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function league_events_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the league_events module.
+    case 'help.page.league_events':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Events for games on League tournament') . '</p>';
+      return $output;
+
+    default:
+  }
+}

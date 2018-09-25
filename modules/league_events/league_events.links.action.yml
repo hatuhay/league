@@ -1,0 +1,11 @@
+entity.events.add_form:
+  route_name: 'entity.events.add_form'
+  title: 'Add Events'
+  appears_on:
+    - entity.events.collection
+
+entity.game_events.add_form:
+  route_name: entity.game_events.add_form
+  title: 'Add Game events'
+  appears_on:
+    - entity.game_events.collection

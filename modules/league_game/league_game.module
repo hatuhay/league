@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains league_game.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function league_game_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the league_game module.
+    case 'help.page.league_game':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Game functions for League Module') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function league_game_theme() {
+  return [
+    'league_game' => [
+      'template' => 'league_game',
+      'render element' => 'children',
+    ],
+  ];
+}

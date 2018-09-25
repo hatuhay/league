@@ -1,0 +1,33 @@
+add team entities:
+  title: 'Create new Team entities'
+
+administer team entities:
+  title: 'Administer Team entities'
+  description: 'Allow to access the administration form to configure Team entities.'
+  restrict access: true
+
+delete team entities:
+  title: 'Delete Team entities'
+
+edit team entities:
+  title: 'Edit Team entities'
+
+access team overview:
+  title: 'Access the Team overview page'
+
+view published team entities:
+  title: 'View published Team entities'
+
+view unpublished team entities:
+  title: 'View unpublished Team entities'
+
+view all team revisions:
+  title: 'View all Team revisions'
+
+revert all team revisions:
+  title: 'Revert all Team revisions'
+  description: 'Role requires permission <em>view Team revisions</em> and <em>edit rights</em> for team entities in question or <em>administer team entities</em>.'
+
+delete all team revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Team revisions</em> and <em>delete rights</em> for team entities in question or <em>administer team entities</em>.'

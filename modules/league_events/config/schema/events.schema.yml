@@ -1,0 +1,36 @@
+league_events.events.*:
+  type: config_entity
+  label: 'Events config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+    icon:
+      type: string
+      label: 'Icon Class'
+      default: 0
+    points:
+      type: integer
+      label: 'Points'
+      default: 1
+    active:
+      type: integer
+      label: 'Is active'
+      default: 1
+    public:
+      type: integer
+      label: 'Is public'
+      default: 0
+    other:
+      type: integer
+      label: 'Other'
+      default: 0
+    weight:
+      type: integer
+      label: 'Weight'
+      default: 0

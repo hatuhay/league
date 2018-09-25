@@ -1,0 +1,22 @@
+# Player menu items definition
+entity.player.collection:
+  title: 'Player list'
+  route_name: entity.player.collection
+  description: 'List Player entities'
+  parent: system.admin_content
+  weight: 100
+
+player.admin.structure.settings:
+  title: Player settings
+  description: 'Configure Player entities'
+  route_name: player.settings
+  parent: system.admin_structure
+
+# Position menu items definition
+entity.position.collection:
+  title: 'Position'
+  route_name: entity.position.collection
+  description: 'List Position (bundles)'
+  parent: system.admin_structure
+  weight: 99
+

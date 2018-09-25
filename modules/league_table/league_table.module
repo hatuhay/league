@@ -1,0 +1,160 @@
+<?php
+
+/**
+ * @file
+ * Contains league_table.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\league_table;
+
+/**
+ * Implements hook_help().
+ */
+function league_table_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the league_table module.
+    case 'help.page.league_table':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('League result table handling for round robin') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * hook_ENTITY_TYPE_insert().
+ *
+ * Create/update game statistics
+ */
+function league_table_league_game_insert($league_game) {
+  league_table_tables_save($league_game);
+}
+
+/**
+ * hook_ENTITY_TYPE_update().
+ *
+ * Create/update game statistics
+ */
+function league_table_league_game_update($league_game) {
+  league_table_tables_save($league_game);
+}
+
+/**
+ * hook_ENTITY_TYPE_delete().
+ *
+ * Delete game statistics
+ */
+function league_table_league_game_delete($league_game) {
+  LeagueTableStorage::delete_by_game(array($league_game->id));
+}
+
+/**
+ * Create/update game statistics
+ */
+function league_table_tables_save(&$league_game) {
+  $config = \Drupal::config('league.settings');
+  $win_p = $config->get('win');
+  $tie_p = $config->get('tie');
+  $loose_p = $config->get('loose');
+  $diff = $league_game->score_a - $league_game->score_b;
+  if ($diff > 0) {
+    $league_game->points_a = $win_p;
+    $league_game->points_b = $loose_p;
+  }
+  else if ($diff < 0) {
+    $league_game->points_a = $loose_p;
+    $league_game->points_b = $win_p;
+  }
+  else {
+    $league_game->points_a = $tie_p;
+    $league_game->points_b = $tie_p;
+  }
+  $statistics = league_table_game_statistics($league_game);
+  foreach ($statistics as $game_id => $statistic) {
+    $tables = LeagueTableStorage::get($game_id);
+    foreach ($statistic as $team_id => $statistic_data) {
+      if ($statistic_data['played']) {
+        $table = array(
+          'game_id' => $game_id,
+          'team_id' => $team_id,
+          'played' => $statistic_data['played'],
+          'local' => $statistic_data['local'],
+          'win' => $statistic_data['win'],
+          'tie' => $statistic_data['tie'],
+          'loose' => $statistic_data['loose'],
+          'goals' => $statistic_data['goals_own'] - $statistic_data['goals_against'],
+          'favor' => $statistic_data['goals_own'],
+          'against' => $statistic_data['goals_against'],
+          'points' => is_int($statistic_data['points']) ? ($statistic_data['win'] * $win_p + $statistic_data['tie'] * $tie_p + $statistic_data['loose'] * $loose_p) : $statistic_data['points'],
+        );
+      }
+      else {
+        $table = array(
+          'game_id' => $game_id,
+          'team_id' => $team_id,
+          'played' => 0,
+          'local' => 0,
+          'win' => 0,
+          'tie' => 0,
+          'loose' => 0,
+          'goals' => 0,
+          'favor' => 0,
+          'against' => 0,
+          'points' => 0,
+        );
+      }
+      if (empty($tables) > 0) {
+        LeagueTableStorage::edit($table);
+      }
+      else {
+        $table['id'] = $tables[$team_id];
+        LeagueTableStorage::add($table);
+      }
+    }
+  }
+}
+
+/**
+ * Return game statistics per team
+ */
+function league_table_game_statistics($league_game) {
+  $game_id = $league_game->id;
+  $played = $league_game->status == 2 ? 1 : 0;
+  $team_a = $league_game->team_a;
+  $team_b = $league_game->team_b;
+  $score_a = $league_game->override ? $league_game->override_score_a : $league_game->score_a;
+  $score_b = $league_game->override ? $league_game->override_score_b : $league_game->score_b;
+  $points_a = $league_game->override ? $league_game->override_points_a : $league_game->points_a;
+  $points_b = $league_game->override ? $league_game->override_points_b : $league_game->points_b;
+
+  $statistics = array(
+    $game_id => array(
+      $team_a => array(
+        'played' => $played,
+        'local' => 1,
+        'goals_own' => $score_a,
+        'goals_against' => $score_b,
+        'win' => $score_a > $score_b ? 1 : 0,
+        'tie' => $score_a == $score_b ? 1 : 0,
+        'loose' => $score_a < $score_b ? 1 : 0,
+        'points' => $points_a,
+      ),
+      $team_b => array(
+        'played' => $played,
+        'local' => 2,
+        'goals_own' => $score_b,
+        'goals_against' => $score_a,
+        'win' => $score_b > $score_a ? 1 : 0,
+        'tie' => $score_b == $score_a ? 1 : 0,
+        'loose' => $score_b < $score_a ? 1 : 0,
+        'points' => $points_b,
+      ),
+    ),
+  );
+  // hook_league_table_game_statistics_alter
+  Drupal::moduleHandler()->alter('league_table_game_statistics', $statistics);
+  return $statistics;
+}

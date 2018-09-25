@@ -1,0 +1,23 @@
+
+# Events menu items definition
+entity.events.collection:
+  title: 'Events'
+  route_name: entity.events.collection
+  description: 'List Events (bundles)'
+  parent: system.admin_structure
+  weight: 99
+
+
+# Game events menu items definition
+entity.game_events.collection:
+  title: 'Game events list'
+  route_name: entity.game_events.collection
+  description: 'List Game events entities'
+  parent: system.admin_structure
+  weight: 100
+
+game_events.admin.structure.settings:
+  title: Game events settings
+  description: 'Configure Game events entities'
+  route_name: game_events.settings
+  parent: system.admin_structure

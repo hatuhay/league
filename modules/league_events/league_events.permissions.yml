@@ -1,0 +1,22 @@
+add game events entities:
+  title: 'Create new Game events entities'
+
+administer game events entities:
+  title: 'Administer Game events entities'
+  description: 'Allow to access the administration form to configure Game events entities.'
+  restrict access: true
+
+delete game events entities:
+  title: 'Delete Game events entities'
+
+edit game events entities:
+  title: 'Edit Game events entities'
+
+access game events overview:
+  title: 'Access the Game events overview page'
+
+view published game events entities:
+  title: 'View published Game events entities'
+
+view unpublished game events entities:
+  title: 'View unpublished Game events entities'

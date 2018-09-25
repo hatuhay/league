@@ -1,0 +1,4 @@
+league.settings:
+  title: League
+  route_name: league.settings
+  parent: system.admin

@@ -1,0 +1,7 @@
+name: League Table
+type: module
+description: League result table handling for round robin
+core: 8.x
+package: League
+dependencies:
+  - league_game

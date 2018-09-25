@@ -1,0 +1,7 @@
+
+view league table:
+  title: 'View League Table'
+  description: 'View league table records'
+delete league table:
+  title: 'Delete League Table'
+  description: 'Delete League Table records'

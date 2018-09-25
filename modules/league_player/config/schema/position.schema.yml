@@ -1,0 +1,16 @@
+league_player.position.*:
+  type: config_entity
+  label: 'Position config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+    weight:
+      type: integer
+      label: 'Weight'
+      default: 0

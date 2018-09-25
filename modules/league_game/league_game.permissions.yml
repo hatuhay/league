@@ -1,0 +1,33 @@
+add game entities:
+  title: 'Create new Game entities'
+
+administer game entities:
+  title: 'Administer Game entities'
+  description: 'Allow to access the administration form to configure Game entities.'
+  restrict access: true
+
+delete game entities:
+  title: 'Delete Game entities'
+
+edit game entities:
+  title: 'Edit Game entities'
+
+access game overview:
+  title: 'Access the Game overview page'
+
+view published game entities:
+  title: 'View published Game entities'
+
+view unpublished game entities:
+  title: 'View unpublished Game entities'
+
+view all game revisions:
+  title: 'View all Game revisions'
+
+revert all game revisions:
+  title: 'Revert all Game revisions'
+  description: 'Role requires permission <em>view Game revisions</em> and <em>edit rights</em> for game entities in question or <em>administer game entities</em>.'
+
+delete all game revisions:
+  title: 'Delete all revisions'
+  description: 'Role requires permission to <em>view Game revisions</em> and <em>delete rights</em> for game entities in question or <em>administer game entities</em>.'

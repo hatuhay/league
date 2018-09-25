@@ -1,0 +1,9 @@
+name: League
+description: Online tournament manager.
+package: League
+type: module
+core: 8.x
+dependencies:
+  - node
+  - path
+  - text

@@ -1,0 +1,7 @@
+name: League Game
+type: module
+description: Game functions for League Module
+core: 8.x
+package: League
+dependencies:
+  - league

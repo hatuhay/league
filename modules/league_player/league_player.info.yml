@@ -1,0 +1,7 @@
+name: League Player
+type: module
+description: Entity for players on League
+core: 8.x
+package: League
+dependencies:
+  - league

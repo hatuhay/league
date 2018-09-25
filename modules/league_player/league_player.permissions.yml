@@ -1,0 +1,19 @@
+add player entities:
+  title: 'Create new Player entities'
+
+administer player entities:
+  title: 'Administer Player entities'
+  description: 'Allow to access the administration form to configure Player entities.'
+  restrict access: true
+
+delete player entities:
+  title: 'Delete Player entities'
+
+edit player entities:
+  title: 'Edit Player entities'
+
+view published player entities:
+  title: 'View published Player entities'
+
+view unpublished player entities:
+  title: 'View unpublished Player entities'

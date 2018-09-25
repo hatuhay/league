@@ -1,0 +1,10 @@
+entity.player.add_form:
+  route_name: entity.player.add_form
+  title: 'Add Player'
+  appears_on:
+    - entity.player.collection
+entity.position.add_form:
+  route_name: 'entity.position.add_form'
+  title: 'Add Position'
+  appears_on:
+    - entity.position.collection
